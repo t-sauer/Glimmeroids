@@ -268,7 +268,7 @@ export default class Glimmeroids extends Component {
     }
   }
 
-  checkCollisionsWith(items1: any[], items2: any[]) {
+  checkCollisionsWith(items1: Entity[], items2: Entity[]) {
     let a = items1.length - 1;
     let b;
     for (a; a > -1; --a) {
@@ -284,7 +284,7 @@ export default class Glimmeroids extends Component {
     }
   }
 
-  checkCollision(obj1: any, obj2: any): boolean {
+  checkCollision(obj1: Entity, obj2: Entity): boolean {
     let vx = obj1.position.x - obj2.position.x;
     let vy = obj1.position.y - obj2.position.y;
     let length = Math.sqrt(vx * vx + vy * vy);
