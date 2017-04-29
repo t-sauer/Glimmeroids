@@ -1,6 +1,10 @@
 # Glimmeroids
 
-Glimmer.js port of [Reacteroids](https://github.com/chriz001/Reacteroids)
+Glimmer.js port of [Reacteroids](https://github.com/chriz001/Reacteroids).
+
+## Demo
+
+[http://www.t-sauer.io/Glimmeroids/](http://www.t-sauer.io/Glimmeroids/)
 
 ## Prerequisites
 
