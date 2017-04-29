@@ -1,14 +1,16 @@
+import { GlimmeroidsState } from '../ui/components/glimmeroids-app/component';
+import { Entity, Position } from './entity';
 import { asteroidVertices, randomNumBetween } from './helper';
 import Particle from './Particle';
 
-export default class Asteroid {
-  position: { x: number, y: number };
-  velocity: { x: number, y: number };
+export default class Asteroid implements Entity {
+  position: Position;
+  velocity: Position;
   rotation: number;
   rotationSpeed: number;
   radius: number;
   score: number;
-  vertices: Array<{ x: number, y: number}>;
+  vertices: Position[];
   delete: boolean;
 
   create: Function;
@@ -68,7 +70,7 @@ export default class Asteroid {
     }
   }
 
-  render(state: any) {
+  render(state: GlimmeroidsState) {
     // Move
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;

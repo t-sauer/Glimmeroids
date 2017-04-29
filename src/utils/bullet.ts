@@ -1,8 +1,10 @@
+import { GlimmeroidsState } from '../ui/components/glimmeroids-app/component';
+import { Entity, Position } from './entity';
 import { rotatePoint } from './helper';
 
-export default class Bullet {
-  position: { x: number, y: number};
-  velocity: { x: number, y: number};
+export default class Bullet implements Entity {
+  position: Position;
+  velocity: Position;
   rotation: number;
   radius: number;
   delete: boolean;
@@ -25,7 +27,7 @@ export default class Bullet {
     this.delete = true;
   }
 
-  render(state: any) {
+  render(state: GlimmeroidsState) {
     // Move
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;

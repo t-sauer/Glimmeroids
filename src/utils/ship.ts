@@ -1,11 +1,13 @@
+import { GlimmeroidsState } from '../ui/components/glimmeroids-app/component';
 import Bullet from './bullet';
+import { Entity, Position } from './entity';
 import { randomNumBetween, rotatePoint } from './helper';
 import Particle from './particle';
 
-export default class Ship {
+export default class Ship implements Entity {
 
-  position: { x: number, y: number };
-  velocity: { x: number, y: number };
+  position: Position;
+  velocity: Position;
   rotation: number;
   rotationSpeed: number;
   speed: number;
@@ -86,7 +88,7 @@ export default class Ship {
     this.create(particle, 'particles');
   }
 
-  render(state: any) {
+  render(state: GlimmeroidsState) {
     // Controls
     if (state.keys.up) {
       this.accelerate();

@@ -1,7 +1,10 @@
 import Component, { tracked } from '@glimmer/component';
 import Asteroid from '../../../utils/asteroid';
+import Bullet from '../../../utils/bullet';
 import { randomNumBetweenExcluding } from '../../../utils/helper';
+import Particle from '../../../utils/Particle';
 import Ship from '../../../utils/ship';
+import { Entity } from "../../../utils/entity";
 
 const KEY = {
   LEFT:  37,
@@ -13,33 +16,34 @@ const KEY = {
   SPACE: 32
 };
 
-export default class Glimmeroids extends Component {
-  @tracked
-  state: {
-    screen: {
-      width: number,
-      height: number,
-      ratio: number
-    };
-    context: any;
-    keys: {
-      left: Boolean,
-      right: Boolean,
-      up: Boolean,
-      down: Boolean,
-      space: Boolean
-    };
-    asteroidCount: number;
-    currentScore: number;
-    topScore: number;
-    inGame: boolean;
+export interface GlimmeroidsState {
+  screen: {
+    width: number,
+    height: number,
+    ratio: number
   };
-  ship: any[];
-  asteroids: any[];
-  bullets: any[];
-  particles: any[];
+  context: CanvasRenderingContext2D;
+  keys: {
+    left: Boolean,
+    right: Boolean,
+    up: Boolean,
+    down: Boolean,
+    space: Boolean
+  };
+  asteroidCount: number;
+  currentScore: number;
+  topScore: number;
+  inGame: boolean;
+}
 
-  constructor(options: any) {
+export default class Glimmeroids extends Component {
+  @tracked state: GlimmeroidsState;
+  ship: Ship[];
+  asteroids: Asteroid[];
+  bullets: Bullet[];
+  particles: Particle[];
+
+  constructor(options: object) {
     super(options);
     this.state = {
       screen: {
@@ -240,11 +244,19 @@ export default class Glimmeroids extends Component {
     }
   }
 
-  createObject(item: object, group: 'asteroids' | 'ship') {
-    this[group].push(item);
+  createObject(item: Entity, group: 'asteroids' | 'ship' | 'particles' | 'bullets') {
+    if (group === 'asteroids') {
+      this.asteroids.push(item as Asteroid);
+    } else if (group === 'ship') {
+      this.ship.push(item as Ship);
+    } else if (group === 'particles') {
+      this.particles.push(item as Particle);
+    } else if (group === 'bullets') {
+      this.bullets.push(item as Bullet);
+    }
   }
 
-  updateObjects(items: any[], group: 'asteroids' | 'ship' | 'particles' | 'bullets') {
+  updateObjects(items: Entity[], group: 'asteroids' | 'ship' | 'particles' | 'bullets') {
     let index = 0;
     for (let item of items) {
       if (item.delete) {

@@ -1,6 +1,9 @@
-export default class Particle {
-  position: { x: number, y: number };
-  velocity: { x: number, y: number };
+import { GlimmeroidsState } from '../ui/components/glimmeroids-app/component';
+import { Entity, Position } from './entity';
+
+export default class Particle implements Entity {
+  position: Position;
+  velocity: Position;
   radius: number;
   lifeSpan: number;
   inertia: number;
@@ -18,7 +21,7 @@ export default class Particle {
     this.delete = true;
   }
 
-  render(state: any) {
+  render(state: GlimmeroidsState) {
     // Move
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
