@@ -1,7 +1,6 @@
 # Glimmeroids
 
-This README outlines the details of collaborating on this Glimmer application.
-A short introduction of this app could easily go here.
+Glimmer.js port of [Reacteroids](https://github.com/chriz001/Reacteroids)
 
 ## Prerequisites
 

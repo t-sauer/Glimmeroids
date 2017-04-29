@@ -5,7 +5,11 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true
   },
   "exclude": [
     "node_modules",
