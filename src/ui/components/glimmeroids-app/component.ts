@@ -1,10 +1,10 @@
 import Component, { tracked } from '@glimmer/component';
 import Asteroid from '../../../utils/asteroid';
 import Bullet from '../../../utils/bullet';
+import { Entity } from '../../../utils/entity';
 import { randomNumBetweenExcluding } from '../../../utils/helper';
 import Particle from '../../../utils/Particle';
 import Ship from '../../../utils/ship';
-import { Entity } from "../../../utils/entity";
 
 const KEY = {
   LEFT:  37,
@@ -62,7 +62,7 @@ export default class Glimmeroids extends Component {
       asteroidCount: 3,
       currentScore: 0,
       topScore: localStorage.topscore || 0,
-      inGame: false
+      inGame: true
     };
     this.ship = [];
     this.asteroids = [];
