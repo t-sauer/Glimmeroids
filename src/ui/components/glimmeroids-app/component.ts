@@ -67,6 +67,17 @@ export default class Glimmeroids extends Component {
   }
 
   @tracked('state')
+  get gameOverMessage() {
+    if (this.state.currentScore <= 0) {
+      return '0 points... So sad.';
+    } else if (this.state.currentScore >= this.state.topScore) {
+      return 'Top score with ' + this.state.currentScore + ' points. Woo!';
+    } else {
+      return this.state.currentScore + ' Points though :)';
+    }
+  }
+
+  @tracked('state')
   get canvasSize() {
     return {
       width: this.state.screen.width * this.state.screen.ratio,
