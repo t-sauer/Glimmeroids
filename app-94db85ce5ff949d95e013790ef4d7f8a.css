@@ -2,8 +2,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'PT Mono', serif;
-  color: #ffffff;
-}
+  color: #ffffff; }
+
 canvas {
   display: block;
   background-color: #000000;
@@ -13,21 +13,21 @@ canvas {
   left: 0;
   right: 0;
   width: 100%;
-  height: 100%;
-}
+  height: 100%; }
+
 .current-score {
-  left: 20px;
-}
+  left: 20px; }
+
 .top-score {
-  right: 20px;
-}
+  right: 20px; }
+
 .score {
   display: block;
   position: absolute;
   top: 15px;
   z-index: 1;
-  font-size: 20px;
-}
+  font-size: 20px; }
+
 .controls {
   display: block;
   position: absolute;
@@ -37,18 +37,18 @@ canvas {
   z-index: 1;
   font-size: 11px;
   text-align: center;
-  line-height: 1.6;
-}
-.endgame{
+  line-height: 1.6; }
+
+.endgame {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 16px;
   z-index: 1;
-  text-align: center;
-}
-button{
+  text-align: center; }
+
+button {
   border: 4px solid #ffffff;
   background-color: transparent;
   color: #ffffff;
@@ -56,9 +56,8 @@ button{
   padding: 10px 20px;
   margin: 10px;
   font-family: 'PT Mono', serif;
-  cursor: pointer;
-}
-button:hover{
+  cursor: pointer; }
+
+button:hover {
   background-color: #ffffff;
-  color: #000000;
-}
+  color: #000000; }
