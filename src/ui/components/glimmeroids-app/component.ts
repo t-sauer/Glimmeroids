@@ -47,6 +47,11 @@ export default class Glimmeroids extends Component {
 
   constructor(options: object) {
     super(options);
+
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp   = this.handleKeyUp.bind(this);
+    this.handleResize  = this.handleResize.bind(this);
+
     this.state = {
       screen: {
         width: window.innerWidth,
@@ -124,9 +129,9 @@ export default class Glimmeroids extends Component {
   }
 
   didInsertElement() {
-    window.addEventListener('keyup',   this.handleKeyUp.bind(this));
-    window.addEventListener('keydown', this.handleKeyDown.bind(this));
-    window.addEventListener('resize',  this.handleResize.bind(this));
+    window.addEventListener('keyup',   this.handleKeyUp);
+    window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('resize',  this.handleResize);
 
     const context = (this.element as HTMLElement).querySelector('canvas').getContext('2d');
     this.state = {
@@ -138,9 +143,9 @@ export default class Glimmeroids extends Component {
   }
 
   willDestroy() {
-    window.removeEventListener('resize', this.handleKeyUp);
-    window.removeEventListener('resize', this.handleKeyDown);
-    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('keyup',   this.handleKeyUp);
+    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('resize',  this.handleResize);
   }
 
   update() {
