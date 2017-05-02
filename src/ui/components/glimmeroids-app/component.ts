@@ -16,6 +16,8 @@ const KEY = {
   SPACE: 32
 };
 
+const INITIAL_ASTEROID_COUNT = 3;
+
 export interface GlimmeroidsState {
   screen: {
     width: number,
@@ -59,7 +61,7 @@ export default class Glimmeroids extends Component {
         down  : false,
         space : false
       },
-      asteroidCount: 3,
+      asteroidCount: INITIAL_ASTEROID_COUNT,
       currentScore: 0,
       topScore: localStorage.topscore || 0,
       inGame: true
@@ -193,7 +195,8 @@ export default class Glimmeroids extends Component {
     this.state = {
       ...this.state,
       inGame: true,
-      currentScore: 0
+      currentScore: 0,
+      asteroidCount: INITIAL_ASTEROID_COUNT
     };
 
     // Make ship
