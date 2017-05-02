@@ -257,24 +257,20 @@ export default class Glimmeroids extends Component {
   }
 
   updateObjects(items: Entity[], group: 'asteroids' | 'ship' | 'particles' | 'bullets') {
-    let index = 0;
-    for (let item of items) {
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
       if (item.delete) {
-        this[group].splice(index, 1);
+        this[group].splice(i, 1);
       } else {
-        items[index].render(this.state);
+        item.render(this.state);
       }
-      index++;
     }
   }
 
   checkCollisionsWith(items1: Entity[], items2: Entity[]) {
-    let a = items1.length - 1;
-    let b;
-    for (a; a > -1; --a) {
-      b = items2.length - 1;
-      for (b; b > -1; --b) {
-        let item1 = items1[a];
+    for (let a = 0; a < items1.length; a++) {
+      let item1 = items1[a];
+      for (let b = 0; b < items2.length; b++) {
         let item2 = items2[b];
         if (this.checkCollision(item1, item2)) {
           item1.destroy();
