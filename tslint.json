@@ -16,6 +16,7 @@
     "no-empty": false,
     "only-arrow-functions": [false],
     "no-shadowed-variable": false,
+    "prefer-for-of": false,
     "prefer-const": false,
     "object-literal-key-quotes": [true, "as-needed"],
     "member-access": [true, "no-public"]
