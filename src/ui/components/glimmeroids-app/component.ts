@@ -257,14 +257,13 @@ export default class Glimmeroids extends Component {
   }
 
   updateObjects(items: Entity[], group: 'asteroids' | 'ship' | 'particles' | 'bullets') {
-    let index = 0;
-    for (let item of items) {
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
       if (item.delete) {
-        this[group].splice(index, 1);
+        this[group].splice(i, 1);
       } else {
-        items[index].render(this.state);
+        item.render(this.state);
       }
-      index++;
     }
   }
 
