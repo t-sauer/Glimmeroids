@@ -1,5 +1,5 @@
 <div>
-  {{#unless state.inGame}}
+  {{#if (eq state.inGame GameState.GameOver)}}
     <div class="endgame">
       <p>Game over, man!</p>
       <p>{{gameOverMessage}}</p>
@@ -7,7 +7,7 @@
         try again?
       </button>
     </div>
-  {{/unless}}
+  {{/if}}
 
   <span class="score current-score" >Score: {{state.currentScore}}</span>
   <span class="score top-score" >Top Score: {{state.topScore}}</span>
