@@ -4,6 +4,13 @@ body {
   font-family: 'PT Mono', serif;
   color: #ffffff;
 }
+
+h1,h2,h3,h4 {
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: normal
+}
+
 canvas {
   display: block;
   background-color: #000000;
@@ -15,6 +22,22 @@ canvas {
   width: 100%;
   height: 100%;
 }
+
+.title {
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  text-align: center;
+  line-height: 1.6;
+
+  .logo {
+    margin: 0;
+  }
+}
+
 .current-score {
   left: 20px;
 }
@@ -31,7 +54,7 @@ canvas {
 .controls {
   display: block;
   position: absolute;
-  top: 15px;
+  bottom: 15px;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 1;
@@ -39,7 +62,7 @@ canvas {
   text-align: center;
   line-height: 1.6;
 }
-.endgame{
+.message{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -61,4 +84,26 @@ button{
 button:hover{
   background-color: #ffffff;
   color: #000000;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-style: italic;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.logo::before {
+  background-color: #F5835F;
+  background-image: url('/logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 2.75rem;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+  width: 2.75rem;
 }

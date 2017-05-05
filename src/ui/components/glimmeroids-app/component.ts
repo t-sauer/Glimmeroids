@@ -18,6 +18,12 @@ const KEY = {
 
 const INITIAL_ASTEROID_COUNT = 3;
 
+enum GameState {
+  Welcome = 0,
+  Running,
+  GameOver,
+}
+
 export interface GlimmeroidsState {
   screen: {
     width: number,
@@ -35,7 +41,7 @@ export interface GlimmeroidsState {
   asteroidCount: number;
   currentScore: number;
   topScore: number;
-  inGame: boolean;
+  gameState: GameState;
 }
 
 export default class Glimmeroids extends Component {
@@ -44,6 +50,8 @@ export default class Glimmeroids extends Component {
   asteroids: Asteroid[];
   bullets: Bullet[];
   particles: Particle[];
+
+  GameState = GameState;
 
   constructor(options: object) {
     super(options);
@@ -69,7 +77,7 @@ export default class Glimmeroids extends Component {
       asteroidCount: INITIAL_ASTEROID_COUNT,
       currentScore: 0,
       topScore: localStorage.topscore || 0,
-      inGame: true
+      gameState: GameState.Welcome,
     };
     this.ship = [];
     this.asteroids = [];
@@ -138,7 +146,6 @@ export default class Glimmeroids extends Component {
       ...this.state,
       context
     };
-    this.startGame();
     requestAnimationFrame(() => this.update());
   }
 
@@ -188,7 +195,7 @@ export default class Glimmeroids extends Component {
   }
 
   addScore(points: number) {
-    if (this.state.inGame) {
+    if (this.state.gameState === GameState.Running) {
       this.state = {
         ...this.state,
         currentScore: this.state.currentScore + points
@@ -199,7 +206,7 @@ export default class Glimmeroids extends Component {
   startGame() {
     this.state = {
       ...this.state,
-      inGame: true,
+      gameState: GameState.Running,
       currentScore: 0,
       asteroidCount: INITIAL_ASTEROID_COUNT
     };
@@ -223,7 +230,7 @@ export default class Glimmeroids extends Component {
   gameOver() {
     this.state = {
       ...this.state,
-      inGame: false
+      gameState: GameState.GameOver,
     };
 
     // Replace top score
@@ -238,12 +245,17 @@ export default class Glimmeroids extends Component {
 
   generateAsteroids(amount: number) {
     let ship = this.ship[0];
+    let shipPosition = ship ? ship.position : {
+      x: this.state.screen.width / 2,
+      y: this.state.screen.height / 2
+    };
+
     for (let i = 0; i < amount; i++) {
       let asteroid = new Asteroid({
         size: 80,
         position: {
-          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x - 60, ship.position.x + 60),
-          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y - 60, ship.position.y + 60)
+          x: randomNumBetweenExcluding(0, this.state.screen.width, shipPosition.x - 60, shipPosition.x + 60),
+          y: randomNumBetweenExcluding(0, this.state.screen.height, shipPosition.y - 60, shipPosition.y + 60)
         },
         create: this.createObject.bind(this),
         addScore: this.addScore.bind(this)

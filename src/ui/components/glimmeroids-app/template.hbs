@@ -1,13 +1,23 @@
 <div>
-  {{#unless state.inGame}}
-    <div class="endgame">
-      <p>Game over, man!</p>
-      <p>{{gameOverMessage}}</p>
+  {{#if (not (eq state.gameState GameState.Running))}}
+    <div class="message">
+      <h1 class="logo">Glimmeroids</h1>
+
+      {{#if (eq state.gameState GameState.GameOver)}}
+        <p>Game over, man!</p>
+        <p>{{gameOverMessage}}</p>
+      {{/if}}
+
       <button onclick={{action startGame}}>
-        try again?
+        {{if (eq state.gameState GameState.GameOver) "try again?" "start the game"}}
       </button>
     </div>
-  {{/unless}}
+  {{else}}
+    <div class="title">
+      <h1 class="logo">Glimmeroids</h1>
+    </div>
+  {{/if}}
+
 
   <span class="score current-score" >Score: {{state.currentScore}}</span>
   <span class="score top-score" >Top Score: {{state.topScore}}</span>
