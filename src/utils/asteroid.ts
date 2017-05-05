@@ -14,6 +14,7 @@ export default class Asteroid implements Entity {
   radius: number;
   score: number;
   vertices: Position[];
+  imageOffset: Position;
   delete: boolean;
 
   create: Function;
@@ -32,6 +33,10 @@ export default class Asteroid implements Entity {
     this.create = args.create;
     this.addScore = args.addScore;
     this.vertices = asteroidVertices(8, args.size);
+    this.imageOffset = {
+      x: randomNumBetween(-this.radius * 0.3, this.radius * 0.3),
+      y: randomNumBetween(-this.radius * 0.3, this.radius * 0.3)
+    };
   }
 
   destroy() {
@@ -113,7 +118,13 @@ export default class Asteroid implements Entity {
     }
     context.closePath();
     context.clip();
-    context.drawImage(FILL_IMAGE, -this.radius * 1.5, -this.radius * 1.5, this.radius * 3, this.radius * 3);
+    context.drawImage(
+      FILL_IMAGE,
+      -this.radius * 1.5 + this.imageOffset.x,
+      -this.radius * 1.5 + this.imageOffset.y,
+      this.radius * 3,
+      this.radius * 3
+    );
     context.stroke();
     context.restore();
   }
