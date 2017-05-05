@@ -1,20 +1,22 @@
 <div>
+  {{#if (not (eq state.gameState GameState.Welcome))}}
+    <div class="title">
+      <h1 class="logo">Glimmeroids</h1>
+    </div>
+  {{/if}}
+
   {{#if (not (eq state.gameState GameState.Running))}}
     <div class="message">
-      <h1 class="logo">Glimmeroids</h1>
-
       {{#if (eq state.gameState GameState.GameOver)}}
         <p>Game over, man!</p>
         <p>{{gameOverMessage}}</p>
+      {{else}}
+        <h1 class="logo">Glimmeroids</h1>
       {{/if}}
 
       <button onclick={{action startGame}}>
         {{if (eq state.gameState GameState.GameOver) "try again?" "start the game"}}
       </button>
-    </div>
-  {{else}}
-    <div class="title">
-      <h1 class="logo">Glimmeroids</h1>
     </div>
   {{/if}}
 
