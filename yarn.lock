@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@glimmer/application-pipeline@^0.6.0-beta.2":
+"@glimmer/application-pipeline@^0.6.9":
   version "0.6.9"
   resolved "https://registry.yarnpkg.com/@glimmer/application-pipeline/-/application-pipeline-0.6.9.tgz#7acc5b239aae87f1c52db37f892ae19b2cd121fa"
   dependencies:
