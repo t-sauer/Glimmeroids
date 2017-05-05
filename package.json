@@ -25,7 +25,7 @@
     "ember-cli-deploy-git": "^1.1.1",
     "ember-cli-inject-live-reload": "^1.6.1",
     "ember-cli-uglify": "^1.2.0",
-    "tslint": "^5.1.0",
+    "tslint": "^5.2.0",
     "typescript": "^2.2.2"
   },
   "engines": {
