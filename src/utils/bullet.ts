@@ -17,8 +17,8 @@ export default class Bullet implements Entity {
     };
     this.rotation = args.ship.rotation;
     this.velocity = {
-      x: posDelta.x / 2,
-      y: posDelta.y / 2
+      x: posDelta.x / 2 + args.ship.velocity.x * 0.7,
+      y: posDelta.y / 2 + args.ship.velocity.y * 0.7,
     };
     this.radius = 2;
   }
