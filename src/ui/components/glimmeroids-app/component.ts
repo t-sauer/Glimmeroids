@@ -19,7 +19,8 @@ const KEY = {
 const INITIAL_ASTEROID_COUNT = 3;
 
 enum GameState {
-  Running = 1,
+  Welcome = 0,
+  Running,
   GameOver,
 }
 
@@ -76,7 +77,7 @@ export default class Glimmeroids extends Component {
       asteroidCount: INITIAL_ASTEROID_COUNT,
       currentScore: 0,
       topScore: localStorage.topscore || 0,
-      gameState: GameState.Running,
+      gameState: GameState.Welcome,
     };
     this.ship = [];
     this.asteroids = [];
@@ -145,7 +146,6 @@ export default class Glimmeroids extends Component {
       ...this.state,
       context
     };
-    this.startGame();
     requestAnimationFrame(() => this.update());
   }
 

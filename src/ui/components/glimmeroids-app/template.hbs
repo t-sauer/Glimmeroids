@@ -1,10 +1,15 @@
 <div>
-  {{#if (eq state.gameState GameState.GameOver)}}
-    <div class="endgame">
-      <p>Game over, man!</p>
-      <p>{{gameOverMessage}}</p>
+  {{#if (not (eq state.gameState GameState.Running))}}
+    <div class="message">
+      <p>Glimmeroids</p>
+
+      {{#if (eq state.gameState GameState.GameOver)}}
+        <p>Game over, man!</p>
+        <p>{{gameOverMessage}}</p>
+      {{/if}}
+
       <button onclick={{action startGame}}>
-        try again?
+        {{if (eq state.gameState GameState.GameOver) "try again?" "start the game"}}
       </button>
     </div>
   {{/if}}
