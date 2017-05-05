@@ -40,7 +40,7 @@ export interface GlimmeroidsState {
   asteroidCount: number;
   currentScore: number;
   topScore: number;
-  inGame: GameState;
+  gameState: GameState;
 }
 
 export default class Glimmeroids extends Component {
@@ -76,7 +76,7 @@ export default class Glimmeroids extends Component {
       asteroidCount: INITIAL_ASTEROID_COUNT,
       currentScore: 0,
       topScore: localStorage.topscore || 0,
-      inGame: GameState.Running,
+      gameState: GameState.Running,
     };
     this.ship = [];
     this.asteroids = [];
@@ -195,7 +195,7 @@ export default class Glimmeroids extends Component {
   }
 
   addScore(points: number) {
-    if (this.state.inGame === GameState.Running) {
+    if (this.state.gameState === GameState.Running) {
       this.state = {
         ...this.state,
         currentScore: this.state.currentScore + points
@@ -206,7 +206,7 @@ export default class Glimmeroids extends Component {
   startGame() {
     this.state = {
       ...this.state,
-      inGame: GameState.Running,
+      gameState: GameState.Running,
       currentScore: 0,
       asteroidCount: INITIAL_ASTEROID_COUNT
     };
@@ -230,7 +230,7 @@ export default class Glimmeroids extends Component {
   gameOver() {
     this.state = {
       ...this.state,
-      inGame: GameState.GameOver,
+      gameState: GameState.GameOver,
     };
 
     // Replace top score
