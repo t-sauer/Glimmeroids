@@ -22,6 +22,22 @@ canvas {
   width: 100%;
   height: 100%;
 }
+
+.title {
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  text-align: center;
+  line-height: 1.6;
+
+  .logo {
+    margin: 0;
+  }
+}
+
 .current-score {
   left: 20px;
 }
@@ -38,7 +54,7 @@ canvas {
 .controls {
   display: block;
   position: absolute;
-  top: 15px;
+  bottom: 15px;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 1;
