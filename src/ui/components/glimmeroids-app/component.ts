@@ -245,12 +245,17 @@ export default class Glimmeroids extends Component {
 
   generateAsteroids(amount: number) {
     let ship = this.ship[0];
+    let shipPosition = ship ? ship.position : {
+      x: this.state.screen.width / 2,
+      y: this.state.screen.height / 2
+    };
+
     for (let i = 0; i < amount; i++) {
       let asteroid = new Asteroid({
         size: 80,
         position: {
-          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x - 60, ship.position.x + 60),
-          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y - 60, ship.position.y + 60)
+          x: randomNumBetweenExcluding(0, this.state.screen.width, shipPosition.x - 60, shipPosition.x + 60),
+          y: randomNumBetweenExcluding(0, this.state.screen.height, shipPosition.y - 60, shipPosition.y + 60)
         },
         create: this.createObject.bind(this),
         addScore: this.addScore.bind(this)
