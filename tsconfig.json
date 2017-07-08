@@ -8,8 +8,10 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "types": [
+      "qunit"
+    ]
   },
   "exclude": [
     "node_modules",
