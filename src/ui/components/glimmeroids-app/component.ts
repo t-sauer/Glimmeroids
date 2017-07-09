@@ -56,10 +56,6 @@ export default class Glimmeroids extends Component {
   constructor(options: object) {
     super(options);
 
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleKeyUp   = this.handleKeyUp.bind(this);
-    this.handleResize  = this.handleResize.bind(this);
-
     this.state = {
       screen: {
         width: window.innerWidth,
@@ -104,7 +100,7 @@ export default class Glimmeroids extends Component {
     };
   }
 
-  handleResize() {
+  handleResize = () => {
     this.state = {
       ...this.state,
       screen: {
@@ -115,11 +111,11 @@ export default class Glimmeroids extends Component {
     };
   }
 
-  handleKeyUp(event: KeyboardEvent) {
+  handleKeyUp = (event: KeyboardEvent) => {
     this.handleKeys(false, event);
   }
 
-  handleKeyDown(event: KeyboardEvent) {
+  handleKeyDown = (event: KeyboardEvent) => {
     this.handleKeys(true, event);
   }
 
