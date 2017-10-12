@@ -1,4 +1,4 @@
-import { GlimmeroidsState } from '../ui/components/glimmeroids-app/component';
+import { GlimmeroidsState } from '../ui/components/Glimmeroids/component';
 import { Entity, Position } from './entity';
 
 export default class Particle implements Entity {

@@ -3,11 +3,11 @@ import { setupRenderingTest } from '@glimmer/test-helpers';
 
 const { module, test } = QUnit;
 
-module('Component: glimmeroids-app', function(hooks) {
+module('Component: Glimmeroids', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    await this.render(hbs`<glimmeroids-app />`);
+    await this.render(hbs`<Glimmeroids />`);
     assert.ok(this.containerElement.textContent);
   });
 });

@@ -1,4 +1,4 @@
-import { GlimmeroidsState } from '../ui/components/glimmeroids-app/component';
+import { GlimmeroidsState } from '../ui/components/Glimmeroids/component';
 import Bullet from './bullet';
 import { Entity, Position } from './entity';
 import { randomNumBetween, rotatePoint } from './helper';

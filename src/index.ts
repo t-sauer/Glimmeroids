@@ -14,6 +14,6 @@ app.registerInitializer({
   }
 });
 
-app.renderComponent('glimmeroids-app', containerElement, null);
+app.renderComponent('Glimmeroids', containerElement, null);
 
 app.boot();

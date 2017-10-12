@@ -1,4 +1,4 @@
-import { GlimmeroidsState } from '../ui/components/glimmeroids-app/component';
+import { GlimmeroidsState } from '../ui/components/Glimmeroids/component';
 
 export interface Position {
   x: number;

@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'glimmeroids-app',
+    modulePrefix: 'Glimmeroids',
     environment: environment
   };
 

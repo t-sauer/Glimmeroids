@@ -137,7 +137,7 @@ export default class Glimmeroids extends Component {
     window.addEventListener('keydown', this.handleKeyDown);
     window.addEventListener('resize',  this.handleResize);
 
-    const context = (this.element as HTMLElement).querySelector('canvas').getContext('2d');
+    const context = (this.bounds.firstNode as HTMLElement).querySelector('canvas').getContext('2d');
     this.state = {
       ...this.state,
       context
