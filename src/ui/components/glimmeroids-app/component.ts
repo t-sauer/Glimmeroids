@@ -17,6 +17,9 @@ const KEY = {
 };
 
 const INITIAL_ASTEROID_COUNT = 3;
+const INITIAL_FIRST_NEW_ASTEROID =  3000;
+const MINIMUM_INTERVAL = 500;
+const INTERVALS = [2000, 1500, 1200, 900, 650, MINIMUM_INTERVAL]
 
 enum GameState {
   Welcome = 0,
@@ -42,6 +45,10 @@ export interface GlimmeroidsState {
   currentScore: number;
   topScore: number;
   gameState: GameState;
+  frameCount: number;
+  interval: number;
+  intervals: Array<number>;
+  newAstroidFrameCount: number;
 }
 
 export default class Glimmeroids extends Component {
@@ -78,6 +85,10 @@ export default class Glimmeroids extends Component {
       currentScore: 0,
       topScore: localStorage.topscore || 0,
       gameState: GameState.Welcome,
+      frameCount: null,
+      interval: null,
+      intervals: null,
+      newAstroidFrameCount: null,
     };
     this.ship = [];
     this.asteroids = [];
@@ -167,6 +178,11 @@ export default class Glimmeroids extends Component {
     context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
     context.globalAlpha = 1;
 
+    this.state = {
+      ...this.state,
+      frameCount: this.state.frameCount + 1
+    }
+
     // Next set of asteroids
     if (!this.asteroids.length) {
       let count = this.state.asteroidCount + 1;
@@ -176,6 +192,17 @@ export default class Glimmeroids extends Component {
         asteroidCount: count
       };
       this.generateAsteroids(count);
+    }
+
+    if (this.state.frameCount === this.state.newAstroidFrameCount) {
+      let newInterval = INTERVALS.shift() || MINIMUM_INTERVAL;
+      this.state = {
+        ...this.state, 
+        asteroidCount: this.state.asteroidCount + 1,
+        newAstroidFrameCount: this.state.frameCount + newInterval,
+        interval: newInterval
+      }
+      this.generateAsteroids(1);
     }
 
     // Check for colisions
@@ -208,6 +235,9 @@ export default class Glimmeroids extends Component {
       ...this.state,
       gameState: GameState.Running,
       currentScore: 0,
+      frameCount: 0,
+      interval: INITIAL_FIRST_NEW_ASTEROID,
+      intervals: INTERVALS,
       asteroidCount: INITIAL_ASTEROID_COUNT
     };
 
