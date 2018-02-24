@@ -3,7 +3,7 @@ import Asteroid from '../../../utils/asteroid';
 import Bullet from '../../../utils/bullet';
 import { Entity } from '../../../utils/entity';
 import { randomNumBetweenExcluding } from '../../../utils/helper';
-import Particle from '../../../utils/Particle';
+import Particle from '../../../utils/particle';
 import Ship from '../../../utils/ship';
 
 const KEY = {
